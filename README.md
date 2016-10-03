@@ -9,7 +9,7 @@ to music, play a game or watch art create itself. All of the activities come fro
 with all 3 project inside of it. That is when I got the idea of have an interactive.activity project. I also had the inspiration of how
 each of my projects are different so all together they would fit well into one project.</p>
 
+<img src = "http://i.imgur.com/boloJFS.png">
 <img src = " ">
-<img src = " ">
-<img src = " ">
-<img src = " ">
+<img src = "http://i.imgur.com/v2zXi4x.png">
+<img src = "http://i.imgur.com/1A9I6gz.png">
