@@ -150,7 +150,7 @@ void setup()
 
   // Start Art Project 3
   song = minim.loadFile("Sad Song Piano.mp3");
-  for (int i = 0; i < 50; i++)
+  for (int i = 0; i < 500; i++)
   {
     ellipseX [i] = (int) random (0, width - 50);
     ellipseY [i] = (int) random (0, height -50);
@@ -213,6 +213,7 @@ void draw()
       {
         screen = 3;
         background(0);
+        song.play();
       }
     }
   }
@@ -257,18 +258,22 @@ void draw()
 
     if (shapeMode ==1)
     {
+      fill(random(255), random(255), random(255));
       rect(x, y, 10, 10);
     }
     if (shapeMode ==2)
     {
+      fill(random(255), random(255), random(255));
       ellipse (x, y, 10, 10);
     }
     if (shapeMode ==3)
     {
+      fill(random(255), random(255), random(255));
       triangle (x, y, x-8, y+8, x+8, y+8);
     }
     if (shapeMode ==4)
     {
+      fill(random(255), random(255), random(255));
       rect(x, y, 10, 17.5);
     }
     if (x<1)
@@ -287,32 +292,30 @@ void draw()
     {
       y=height-3;
     }
-
-    if (screen == 2)
+  }
+  if (screen == 2)
+  {
+    playSongs();
+    if (mousePressed)
     {
-      playSongs();
-      if (mousePressed)
-      {
-        xd = mouseX;
-        yd = mouseY;
-      }
+      xd = mouseX;
+      yd = mouseY;
     }
+  }
 
-    if (screen == 3)
+  if (screen == 3)
+  {
+    for (int i = 0; i < 500; i++)
     {
-      for (int i = 0; i < 500; i++)
-      {
-        fill(random(255), 255, 255);
-        ellipse(ellipseX[i], ellipseY[i], 1, 1);
-        ellipseX[i] = ellipseX[i] + (int) random(-3, 3);
-        ellipseY[i] = ellipseY[i] + (int) random(-3, 3);
-        noStroke();
-        colorMode(HSB);
-      }
+      fill(random(255), 255, 255);
+      ellipse(ellipseX[i], ellipseY[i], 1, 1);
+      ellipseX[i] = ellipseX[i] + (int) random(-3, 3);
+      ellipseY[i] = ellipseY[i] + (int) random(-3, 3);
+      noStroke();
+      colorMode(HSB);
     }
   }
 }
-
 
 //Start Game Project 1
 void keyPressed()
