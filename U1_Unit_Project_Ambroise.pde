@@ -44,8 +44,6 @@ int i;
 // Art Project 3
 int [] ellipseX = new int [500];
 int [] ellipseY = new int [500];
-boolean enter = false;
-boolean restart = false;
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -87,39 +85,39 @@ void setup()
 
   fill(0);
   textSize(15);
-  text("#1 = square", 10, 27);
+  text("1 = square", 10, 27);
 
   fill(0);
   textSize(15);
-  text("#2 = circle", 1350, 15);
+  text("2 = circle", 1350, 15);
 
   fill(0);
   textSize(15);
-  text("#3 = triangle", 1340, 890);
+  text("3 = triangle", 1340, 890);
 
   fill(0);
   textSize(15);
-  text("#4 = rectangle", 10, 875);
+  text("4 = rectangle", 10, 875);
 
   fill(0);
   textSize(15);
-  text("Up key = up", 10, 12);
+  text("Up key", 10, 12);
 
   fill(0);
   textSize(15);
-  text("Down key = down", 1305, 30);
+  text("Down key", 1305, 30);
 
   fill(0);
   textSize(15);
-  text("Left key = left", 1330, 870);
+  text("Left key", 1330, 870);
 
   fill(0);
   textSize(15);
-  text("Right key = right", 10, 890);
+  text("Right key", 10, 890);
 
   fill(0);
   textSize(15);
-  text("Enter = Erase", 700, 20);
+  text("Enter = go back to the middle", 700, 20);
   // End Game Project 1
 
   //Start Music Project 2
@@ -160,9 +158,23 @@ void setup()
 
 void draw()
 {
+  if (screen != 3)
+  {
+    song.pause();
+  }
+
+  if (screen != 2)
+  {
+    Songs[i].pause();
+  }
+
   textAlign(CENTER);
   if (screen == 0)
   {
+    image(game, gameButtonX, gameButtonY, 200, 200);
+    image(music, musicButtonX, musicButtonY, 200, 200);
+    image(art, artButtonX, artButtonY, 200, 200);
+
     fill(0, 255, 0);
     textSize(100);
     text("Made By The Legend", 700, 1 * sectionheight - sectionheight / 2);
@@ -195,12 +207,10 @@ void draw()
     textSize(45);
     text("Art!", 3 * sectionwidth - sectionwidth / 2, 440);
 
-
     if (mousePressed)
     {
       if (mouseX >= gameButtonX && mouseX <= gameButtonX+200 && mouseY >= gameButtonY && mouseY <= gameButtonY+200)
       {
-
         screen = 1;
         background(255);
       }
@@ -219,62 +229,66 @@ void draw()
   }
 
   if (screen == 1)
-  { 
+  {
     fill(0);
     textSize(15);
-    text("#1 = square", 10, 27);
+    text("1 = square", 50, 37);
 
     fill(0);
     textSize(15);
-    text("#2 = circle", 1350, 15);
+    text("2 = circle", 45, 57);
 
     fill(0);
     textSize(15);
-    text("#3 = triangle", 1340, 890);
+    text("3 = triangle", 54, 77);
 
     fill(0);
     textSize(15);
-    text("#4 = rectangle", 10, 875);
+    text("4 = rectangle", 57, 97);
 
     fill(0);
     textSize(15);
-    text("Up key = up", 10, 12);
+    text("Up key", 50, 117);
 
     fill(0);
     textSize(15);
-    text("Down key = down", 1305, 30);
+    text("Down key", 50, 137);
 
     fill(0);
     textSize(15);
-    text("Left key = left", 1330, 870);
+    text("Left key", 50, 157);
 
     fill(0);
     textSize(15);
-    text("Right key = right", 10, 890);
+    text("Right key", 50, 177);
 
     fill(0);
     textSize(15);
-    text("Enter = Erase", 700, 20);
+    text("Enter = go back to middle", 100, 17);
 
     if (shapeMode ==1)
     {
       fill(random(255), random(255), random(255));
       rect(x, y, 10, 10);
+      noStroke();
     }
     if (shapeMode ==2)
     {
       fill(random(255), random(255), random(255));
       ellipse (x, y, 10, 10);
+      noStroke();
     }
     if (shapeMode ==3)
     {
       fill(random(255), random(255), random(255));
       triangle (x, y, x-8, y+8, x+8, y+8);
+      noStroke();
     }
     if (shapeMode ==4)
     {
       fill(random(255), random(255), random(255));
       rect(x, y, 10, 17.5);
+      noStroke();
     }
     if (x<1)
     {
@@ -293,6 +307,7 @@ void draw()
       y=height-3;
     }
   }
+
   if (screen == 2)
   {
     playSongs();
@@ -307,12 +322,11 @@ void draw()
   {
     for (int i = 0; i < 500; i++)
     {
-      fill(random(255), 255, 255);
+      fill(random(255), random(255), random(255));
       ellipse(ellipseX[i], ellipseY[i], 1, 1);
       ellipseX[i] = ellipseX[i] + (int) random(-3, 3);
       ellipseY[i] = ellipseY[i] + (int) random(-3, 3);
       noStroke();
-      colorMode(HSB);
     }
   }
 }
@@ -320,66 +334,76 @@ void draw()
 //Start Game Project 1
 void keyPressed()
 {
+  if (key == 'r')
+  {
+    background(0);
+    screen = 0;
+  }
   if ( key == CODED)
   {
     if (keyCode == LEFT)
     {
       x = x - 5;
       fill(random(255), random(255), random(255));
+      noStroke();
     }
     if (keyCode == RIGHT)
     {
       x = x + 5;
       fill(random(255), random(255), random(255));
+      noStroke();
     }
     if (keyCode == UP)
     {
       y = y - 5;
       fill(random(255), random(255), random(255));
+      noStroke();
     }
     if (keyCode == DOWN)
     {
       y = y +5;
       fill(random(255), random(255), random(255));
+      noStroke();
     }
   }
+
   if (key == ENTER)
   {
     fill(0);
     textSize(15);
-    text("#1 = square", 10, 27);
+    text("1 = square", 50, 37);
 
     fill(0);
     textSize(15);
-    text("#2 = circle", 1350, 15);
+    text("2 = circle", 45, 57);
 
     fill(0);
     textSize(15);
-    text("#3 = triangle", 1340, 890);
+    text("3 = triangle", 54, 77);
 
     fill(0);
     textSize(15);
-    text("#4 = rectangle", 10, 875);
+    text("4 = rectangle", 57, 97);
 
     fill(0);
     textSize(15);
-    text("Up key = up", 10, 12);
+    text("Up key", 50, 117);
 
     fill(0);
     textSize(15);
-    text("Down key = down", 1305, 30);
+    text("Down key", 50, 137);
 
     fill(0);
     textSize(15);
-    text("Left key = left", 1330, 870);
+    text("Left key", 50, 157);
 
     fill(0);
     textSize(15);
-    text("Right key = right", 10, 890);
+    text("Right key", 50, 177);
 
     fill(0);
     textSize(15);
-    text("Enter = Erase", 700, 20);
+    text("Enter = go back to middle", 100, 17);
 
     x = width/2;
     y = height/2;
@@ -413,7 +437,6 @@ void playSongs()
   {
     fill(0);
     rect (SquareX [i], SquareY [i], 50, 50);
-
     if (xd > SquareX [i] && xd < SquareX [i]+50 && yd > SquareY [i] && yd < SquareY [i]+ 50)
     {
       println(Songs[i]);
