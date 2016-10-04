@@ -2,10 +2,10 @@
  Ambroise Dedenis's Unit Project - Multiple Activities
  
  This is a multiple Activities. Click on the images to selct an activity.
- Game = Use the arrows to move and use 1,2,3 and 4 to change shapes and press enter if u want to start again.
- Music = Click on the squares to choose a music to pause the music press P and to restart the Music press O.
+ Game = Use the arrows to move and use 1,2,3 and 4 to change shapes and press enter if you want to go back to the middle.
+ Music = Click on the squares to choose a music to change music click another square;
  Art = Watch the circles moving.
- To go back to the main screen click R.
+ To go back to the main screen click r.
  */
 
 //Cover Screen
@@ -442,6 +442,10 @@ void playSongs()
       println(Songs[i]);
       Songs[i].play();
     } else
+    {
+      Songs[i].pause();
+    }
+    if (key == 'r')
     {
       Songs[i].pause();
     }
