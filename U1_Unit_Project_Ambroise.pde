@@ -338,6 +338,10 @@ void keyPressed()
   {
     background(0);
     screen = 0;
+    for (int i = 0; i < 17; i++)
+    {
+      Songs[i].pause();
+    }
   }
   if ( key == CODED)
   {
@@ -442,10 +446,6 @@ void playSongs()
       println(Songs[i]);
       Songs[i].play();
     } else
-    {
-      Songs[i].pause();
-    }
-    if (key == 'r')
     {
       Songs[i].pause();
     }
